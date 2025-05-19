@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIS Magodo Year 6 Project Hub</title>
   <style>
     :root {
@@ -12,6 +12,7 @@
       --gold: #FFD700;
       --white: #ffffff;
       --black: #000000;
+      --gradient: linear-gradient(135deg, #d4145a, #fbb03b);
     }
 
     * {
@@ -23,8 +24,6 @@
       padding: 0;
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background: var(--white);
-      color: var(--wine);
     }
 
     .logo-placeholder {
@@ -47,7 +46,8 @@
       animation: slideIn 1s ease-in-out;
     }
 
-    .welcome-screen, .video-screen {
+    .welcome-screen,
+    .video-screen {
       display: none;
       flex-direction: column;
       justify-content: center;
@@ -59,6 +59,11 @@
 
     .visible {
       display: flex;
+    }
+
+    .welcome-screen {
+      background-color: var(--white);
+      color: var(--wine);
     }
 
     .header {
@@ -98,83 +103,70 @@
       animation: fadeIn 1.5s ease-in-out;
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes slideIn {
-      from {width: 0;}
-      to {width: 120px;}
-    }
-
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    /* Enhanced Video Page Styles */
     .video-screen {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #1e3c72, #2a5298, #fbc2eb, #a6c1ee);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      background: var(--gradient);
       color: white;
     }
 
     .video-layout {
       display: flex;
       flex-direction: column;
+      padding: 20px;
       width: 100%;
-      max-width: 1000px;
-      gap: 20px;
+      max-width: 1100px;
     }
 
     .video-main, .sidebar video {
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .video-main:hover, .sidebar video:hover {
       transform: scale(1.02);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
     }
 
     .video-main {
       width: 100%;
       aspect-ratio: 16/9;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .video-main video, .sidebar video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .sidebar {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      gap: 16px;
     }
 
     .sidebar video {
-      width: 100%;
-      max-width: 480px;
+      width: 48%;
       aspect-ratio: 16/9;
     }
 
     .footer {
       margin-top: 30px;
       text-align: center;
-      color: white;
       font-size: 16px;
-      border-top: 1px solid rgba(255,255,255,0.4);
-      padding-top: 10px;
+      padding: 20px;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { width: 0; }
+      to { width: 120px; }
     }
 
     @media(min-width: 768px) {
@@ -184,6 +176,7 @@
 
       .video-main {
         flex: 2;
+        margin-right: 20px;
       }
 
       .sidebar {
@@ -198,25 +191,27 @@
   </style>
 </head>
 <body>
+  <!-- Login Page -->
   <div class="welcome-screen visible" id="welcome">
     <div class="logo-placeholder">
-      <img src="logo.png" alt="CIS Logo" />
+      <img src="logo.png" alt="CIS Logo">
     </div>
     <div class="line"></div>
     <div class="header">Caleb International School Magodo</div>
     <p style="animation: fadeIn 1.2s ease-in-out; font-size: 16px;">Welcome to Year 6 Project Hub</p>
     <p style="font-size: 14px; color: var(--light-wine); animation: fadeIn 1.3s ease-in-out;">Please fill in the form below to begin</p>
     <div class="form-container">
-      <input type="text" id="name" placeholder="Name" style="animation-delay: 1.4s;" />
-      <input type="text" id="class" placeholder="Class" style="animation-delay: 1.6s;" />
+      <input type="text" id="name" placeholder="Name">
+      <input type="text" id="class" placeholder="Class">
       <button onclick="login()">Login</button>
     </div>
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
   </div>
 
+  <!-- Video Page -->
   <div class="video-screen" id="videoPage">
     <div class="logo-placeholder">
-      <img src="logo.png" alt="CIS Logo" />
+      <img src="logo.png" alt="CIS Logo">
     </div>
     <div class="line"></div>
     <div class="header">
@@ -227,17 +222,17 @@
     <div class="video-layout">
       <div class="video-main">
         <video controls>
-          <source src="Year6new.mp4" type="video/mp4" />
+          <source src="Year6new.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
       <div class="sidebar">
         <video controls>
-          <source src="Other.mp4" type="video/mp4" />
+          <source src="Other.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <video controls>
-          <source src="Year6new.mp4" type="video/mp4" />
+          <source src="Year6new.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
