@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,156 +12,158 @@
       --gold: #FFD700;
       --white: #ffffff;
       --black: #000000;
-    }* {
-  box-sizing: border-box;
-}
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--white);
-  color: var(--wine);
-}
+    }
 
-.logo-placeholder {
-  width: 120px;
-  margin: 20px auto 0 auto;
-  animation: fadeIn 1s ease-in-out;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.logo-placeholder img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--white);
+      color: var(--wine);
+    }
 
-.line {
-  width: 120px;
-  height: 4px;
-  background: var(--gold);
-  margin: 10px auto;
-  animation: slideIn 1s ease-in-out;
-}
+    .logo-placeholder {
+      width: 120px;
+      margin: 20px auto 0 auto;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-.welcome-screen, .video-screen {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 20px;
-  text-align: center;
-}
+    .logo-placeholder img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-.visible {
-  display: flex;
-}
+    .line {
+      width: 120px;
+      height: 4px;
+      background: var(--gold);
+      margin: 10px auto;
+      animation: slideIn 1s ease-in-out;
+    }
 
-.header {
-  font-size: 32px;
-  font-weight: bold;
-  margin-top: 10px;
-  animation: fadeIn 1s ease-in-out;
-}
+    .welcome-screen, .video-screen {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
 
-.form-container {
-  width: 100%;
-  max-width: 400px;
-}
+    .visible {
+      display: flex;
+    }
 
-input {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 18px;
-  background-color: #f5f6f7;
-  animation: fadeIn 1s ease-in-out;
-}
+    .header {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-button {
-  background: var(--black);
-  color: var(--white);
-  padding: 14px;
-  width: 100%;
-  font-size: 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  animation: fadeIn 1.5s ease-in-out;
-}
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+    }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
+    input {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 18px;
+      background-color: #f5f6f7;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-@keyframes slideIn {
-  from {width: 0;}
-  to {width: 120px;}
-}
+    button {
+      background: var(--black);
+      color: var(--white);
+      padding: 14px;
+      width: 100%;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      animation: fadeIn 1.5s ease-in-out;
+    }
 
-.video-layout {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  width: 100%;
-  max-width: 900px;
-}
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
 
-.video-main {
-  width: 100%;
-  aspect-ratio: 16/9;
-  margin-bottom: 20px;
-}
+    @keyframes slideIn {
+      from {width: 0;}
+      to {width: 120px;}
+    }
 
-.video-main iframe, .sidebar iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+    .video-layout {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      width: 100%;
+      max-width: 900px;
+    }
 
-.sidebar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+    .video-main {
+      width: 100%;
+      aspect-ratio: 16/9;
+      margin-bottom: 20px;
+    }
 
-.sidebar iframe {
-  width: 48%;
-  aspect-ratio: 16/9;
-}
+    .video-main video, .sidebar video {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-.footer {
-  margin-top: 30px;
-  text-align: center;
-  color: var(--black);
-  font-size: 16px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-}
+    .sidebar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-@media(min-width: 768px) {
-  .video-layout {
-    flex-direction: row;
-  }
-  .video-main {
-    flex: 2;
-    margin-right: 10px;
-  }
-  .sidebar {
-    flex: 1;
-    flex-direction: column;
-  }
-  .sidebar iframe {
-    width: 100%;
-  }
-}
+    .sidebar video {
+      width: 48%;
+      aspect-ratio: 16/9;
+    }
 
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      color: var(--black);
+      font-size: 16px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    @media(min-width: 768px) {
+      .video-layout {
+        flex-direction: row;
+      }
+      .video-main {
+        flex: 2;
+        margin-right: 10px;
+      }
+      .sidebar {
+        flex: 1;
+        flex-direction: column;
+      }
+      .sidebar video {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -178,27 +181,40 @@ button {
       <button onclick="login()">Login</button>
     </div>
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
-  </div>  <div class="video-screen" id="videoPage">
+  </div>
+
+  <div class="video-screen" id="videoPage">
     <div class="logo-placeholder">
       <img src="logo.png" alt="CIS Logo">
     </div>
     <div class="line"></div>
     <div class="header">
-      <div id="greeting" style="font-size: 24px;">Welcome</div>
+      <div id="greeting" style="font-size: 36px; font-weight: bold;">Welcome</div>
       <div style="font-size: 22px;">Caleb International School</div>
       <div style="font-size: 16px; font-weight: normal;">Student Project</div>
     </div>
     <div class="video-layout">
       <div class="video-main">
-        <iframe src="Test.mp4" allowfullscreen></iframe>
+        <video controls>
+          <source src="Test.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
       <div class="sidebar">
-        <iframe src="Test.mp4" allowfullscreen></iframe>
-        <iframe src="Test.mp4" allowfullscreen></iframe>
+        <video controls>
+          <source src="Test.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video controls>
+          <source src="Test.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
-  </div>  <script>
+  </div>
+
+  <script>
     function login() {
       const name = document.getElementById('name').value.trim();
       const className = document.getElementById('class').value.trim();
@@ -208,10 +224,11 @@ button {
         return;
       }
 
-      document.getElementById('greeting').textContent = `Welcome, ${name}`;
+      document.getElementById('greeting').innerHTML = `<span style="font-size: 36px; font-weight: bold;">Welcome, ${name}</span>`;
 
       document.getElementById('welcome').classList.remove('visible');
       document.getElementById('videoPage').classList.add('visible');
     }
-  </script></body>
+  </script>
+</body>
 </html>
