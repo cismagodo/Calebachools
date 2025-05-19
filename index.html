@@ -1,215 +1,227 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CIS Project Hub</title>
-  <style>
-    :root {
-      --wine: #8B0000;
-      --gold: #FFD700;
-      --white: #ffffff;
-      --black: #000000;
-    }
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>CIS Magodo Year 6 Project Hub</title>  
+  <style>  
+    :root {  
+      --wine: #8B0000;  
+      --light-wine: #B22222;  
+      --chocolate: #D2691E;  
+      --gold: #FFD700;  
+      --white: #ffffff;  
+      --black: #000000;  
+    }  * {  
+  box-sizing: border-box;  
+}  
 
-    * {
-      box-sizing: border-box;
-    }
+body, html {  
+  margin: 0;  
+  padding: 0;  
+  height: 100%;  
+  font-family: 'Segoe UI', sans-serif;  
+  background: var(--white);  
+  color: var(--wine);  
+}  
 
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-    }
+.logo-placeholder {  
+  width: 120px;  
+  margin: 20px auto 0 auto;  
+  animation: fadeIn 1s ease-in-out;  
+}  
 
-    .welcome-screen, .video-screen {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+.logo-placeholder img {  
+  width: 100%;  
+  height: auto;  
+  display: block;  
+}  
 
-    .visible {
-      display: flex;
-    }
+.line {  
+  width: 120px;  
+  height: 4px;  
+  background: var(--gold);  
+  margin: 10px auto;  
+  animation: slideIn 1s ease-in-out;  
+}  
 
-    .welcome-screen {
-      background: var(--white);
-      color: var(--wine);
-      padding: 20px;
-    }
+.welcome-screen, .video-screen {  
+  display: none;  
+  flex-direction: column;  
+  justify-content: center;  
+  align-items: center;  
+  height: 100vh;  
+  padding: 20px;  
+  text-align: center;  
+}  
 
-    .logo-placeholder {
-      width: 100px;
-      margin-bottom: 10px;
-    }
+.visible {  
+  display: flex;  
+}  
 
-    .logo-placeholder img {
-      width: 100%;
-    }
+.header {  
+  font-size: 32px;  
+  font-weight: bold;  
+  margin-top: 10px;  
+  animation: fadeIn 1s ease-in-out;  
+}  
 
-    .line {
-      width: 100px;
-      height: 4px;
-      background: var(--gold);
-      margin: 10px 0;
-    }
+.form-container {  
+  width: 100%;  
+  max-width: 400px;  
+}  
 
-    input, button {
-      width: 90%;
-      max-width: 400px;
-      padding: 14px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 6px;
-      font-size: 18px;
-    }
+input {  
+  display: block;  
+  width: 100%;  
+  padding: 14px;  
+  margin-bottom: 15px;  
+  border: 1px solid #ccc;  
+  border-radius: 6px;  
+  font-size: 18px;  
+  background-color: #f5f6f7;  
+  animation: fadeIn 1s ease-in-out;  
+}  
 
-    input {
-      background: #f2f2f2;
-    }
+button {  
+  background: var(--black);  
+  color: var(--white);  
+  padding: 14px;  
+  width: 100%;  
+  font-size: 18px;  
+  border: none;  
+  border-radius: 6px;  
+  cursor: pointer;  
+  font-weight: bold;  
+  animation: fadeIn 1.5s ease-in-out;  
+}  
 
-    button {
-      background: var(--black);
-      color: var(--white);
-      font-weight: bold;
-      cursor: pointer;
-    }
+@keyframes fadeIn {  
+  from {opacity: 0; transform: translateY(20px);}  
+  to {opacity: 1; transform: translateY(0);}  
+}  
 
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-    }
+@keyframes slideIn {  
+  from {width: 0;}  
+  to {width: 120px;}  
+}  
 
-    /* VIDEO PAGE STYLING */
-    .video-screen {
-      position: relative;
-      background: url('background.jpg') no-repeat center center;
-      background-size: cover;
-      color: white;
-      padding: 30px 20px;
-    }
+.video-layout {  
+  display: flex;  
+  flex-direction: column;  
+  padding: 10px;  
+  width: 100%;  
+  max-width: 900px;  
+}  
 
-    .video-screen::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
-    }
+.video-main {  
+  width: 100%;  
+  aspect-ratio: 16/9;  
+  margin-bottom: 20px;  
+}  
 
-    .video-screen > * {
-      position: relative;
-      z-index: 1;
-    }
+.video-main video, .sidebar video {  
+  width: 100%;  
+  height: 100%;  
+  border: none;  
+}  
 
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+.sidebar {  
+  display: flex;  
+  flex-wrap: wrap;  
+  gap: 10px;  
+}  
 
-    .header h1 {
-      margin: 0;
-      font-size: 30px;
-    }
+.sidebar video {  
+  width: 48%;  
+  aspect-ratio: 16/9;  
+}  
 
-    .main-video {
-      width: 100%;
-      max-width: 800px;
-      aspect-ratio: 16 / 9;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    }
+.footer {  
+  margin-top: 30px;  
+  text-align: center;  
+  color: var(--black);  
+  font-size: 16px;  
+  border-top: 1px solid #ccc;  
+  padding-top: 10px;  
+}  
 
-    .main-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+@media(min-width: 768px) {  
+  .video-layout {  
+    flex-direction: row;  
+  }  
+  .video-main {  
+    flex: 2;  
+    margin-right: 10px;  
+  }  
+  .sidebar {  
+    flex: 1;  
+    flex-direction: column;  
+  }  
+  .sidebar video {  
+    width: 100%;  
+  }  
+}
 
-    .small-videos {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .small-videos video {
-      width: 300px;
-      max-width: 45%;
-      aspect-ratio: 16 / 9;
-      border-radius: 12px;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-
-    @media (max-width: 768px) {
-      .small-videos video {
-        max-width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Login Page -->
-  <div class="welcome-screen visible" id="welcome">
-    <div class="logo-placeholder"><img src="logo.png" alt="Logo"></div>
-    <div class="line"></div>
-    <h2>Caleb International School Magodo</h2>
-    <p>Welcome to Year 6 Project Hub</p>
-    <input type="text" id="name" placeholder="Enter your name">
-    <input type="text" id="class" placeholder="Enter your class">
-    <button onclick="login()">Login</button>
-    <div class="footer">&copy; 2025 Caleb International School</div>
-  </div>
-
-  <!-- Video Page -->
-  <div class="video-screen" id="videoPage">
-    <div class="logo-placeholder"><img src="logo.png" alt="Logo"></div>
-    <div class="line"></div>
-    <div class="header">
-      <h1 id="greeting">Welcome</h1>
-      <p>Caleb International School - Year 6 Projects</p>
-    </div>
-
-    <div class="main-video">
-      <video controls>
-        <source src="Year6new.mp4" type="video/mp4" />
-      </video>
-    </div>
-
-    <div class="small-videos">
-      <video controls>
-        <source src="Other.mp4" type="video/mp4" />
-      </video>
-      <video controls>
-        <source src="Year6new.mp4" type="video/mp4" />
-      </video>
-    </div>
-
-    <div class="footer">&copy; 2025 Caleb International School</div>
-  </div>
-
-  <script>
-    function login() {
-      const name = document.getElementById('name').value.trim();
-      const className = document.getElementById('class').value.trim();
-
-      if (!name || !className) {
-        alert("Please enter both name and class.");
-        return;
-      }
-
-      document.getElementById('greeting').textContent = `Welcome, ${name}`;
-      document.getElementById('welcome').classList.remove('visible');
-      document.getElementById('videoPage').classList.add('visible');
-    }
-  </script>
-</body>
+  </style>  
+</head>  
+<body>  
+  <div class="welcome-screen visible" id="welcome">  
+    <div class="logo-placeholder">  
+      <img src="logo.png" alt="CIS Logo">  
+    </div>  
+    <div class="line"></div>  
+    <div class="header">Caleb International School Magodo</div>  
+    <p style="animation: fadeIn 1.2s ease-in-out; font-size: 16px;">Welcome to Year 6 Project Hub</p>  
+    <p style="font-size: 14px; color: var(--light-wine); animation: fadeIn 1.3s ease-in-out;">Please fill in the form below to begin</p>  
+    <div class="form-container">  
+      <input type="text" id="name" placeholder="Name" style="animation-delay: 1.4s;">  
+      <input type="text" id="class" placeholder="Class" style="animation-delay: 1.6s;">  
+      <button onclick="login()">Login</button>  
+    </div>  
+    <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>  
+  </div>    <div class="video-screen" id="videoPage">  
+    <div class="logo-placeholder">  
+      <img src="logo.png" alt="CIS Logo">  
+    </div>  
+    <div class="line"></div>  
+    <div class="header">  
+      <div id="greeting" style="font-size: 36px; font-weight: bold;">Welcome</div>  
+      <div style="font-size: 22px;">Caleb International School</div>  
+      <div style="font-size: 16px; font-weight: normal;">Student Project</div>  
+    </div>  
+    <div class="video-layout">  
+      <div class="video-main">  
+        <video controls>  
+          <source src="Year6new.mp4" type="video/mp4">  
+          Your browser does not support the video tag.  
+        </video>  
+      </div>  
+      <div class="sidebar">  
+        <video controls>  
+          <source src="Other.mp4" type="video/mp4">  
+          Your browser does not support the video tag.  
+        </video>  
+        <video controls>  
+          <source src="Year6new.mp4" type="video/mp4">  
+          Your browser does not support the video tag.  
+        </video>  
+      </div>  
+    </div>  
+    <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>  
+  </div>    <script>  
+    function login() {  
+      const name = document.getElementById('name').value.trim();  
+      const className = document.getElementById('class').value.trim();  
+  
+      if (!name || !className) {  
+        alert("Please fill in both fields.");  
+        return;  
+      }  
+  
+      document.getElementById('greeting').innerHTML = `<span style="font-size: 36px; font-weight: bold;">Welcome, ${name}</span>`;  
+  
+      document.getElementById('welcome').classList.remove('visible');  
+      document.getElementById('videoPage').classList.add('visible');  
+    }  
+  </script>  </body>  
 </html>
