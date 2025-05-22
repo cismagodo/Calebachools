@@ -11,8 +11,8 @@
       --gold: #FFD700;
       --white: #ffffff;
       --black: #000000;
-      --bg-gradient: linear-gradient(to right, #fff8f0, #ffe4e1);
-      --card-bg: #fffdfa;
+      --bg-gradient: linear-gradient(135deg, #ffe5ec, #fbe8a6, #fcd5ce);
+      --deep-purple: #4b0082;
     }* {
   box-sizing: border-box;
 }
@@ -52,9 +52,10 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
   text-align: center;
+  backdrop-filter: blur(8px);
 }
 
 .visible {
@@ -62,20 +63,20 @@ body, html {
 }
 
 .header {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   margin-top: 10px;
   animation: fadeIn 1s ease-in-out;
+  color: var(--deep-purple);
 }
 
 .form-container {
   width: 100%;
   max-width: 400px;
-  background: var(--card-bg);
   padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 input {
@@ -91,7 +92,7 @@ input {
 }
 
 button {
-  background: var(--black);
+  background: var(--deep-purple);
   color: var(--white);
   padding: 14px;
   width: 100%;
@@ -101,11 +102,11 @@ button {
   cursor: pointer;
   font-weight: bold;
   animation: fadeIn 1.5s ease-in-out;
-  transition: background 0.3s;
 }
 
-button:hover {
-  background: var(--light-wine);
+.signout-btn {
+  margin-top: 20px;
+  background: var(--chocolate);
 }
 
 @keyframes fadeIn {
@@ -123,7 +124,7 @@ button:hover {
   flex-direction: column;
   padding: 10px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
 }
 
 .video-main {
@@ -135,16 +136,14 @@ button:hover {
 .video-main video, .sidebar video {
   width: 100%;
   height: 100%;
-  border: 3px solid var(--gold);
-  border-radius: 12px;
-  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  gap: 10px;
 }
 
 .sidebar video {
@@ -165,17 +164,14 @@ button:hover {
   .video-layout {
     flex-direction: row;
   }
-
   .video-main {
     flex: 2;
-    margin-right: 20px;
+    margin-right: 10px;
   }
-
   .sidebar {
     flex: 1;
     flex-direction: column;
   }
-
   .sidebar video {
     width: 100%;
   }
@@ -193,9 +189,9 @@ button:hover {
     <p style="animation: fadeIn 1.2s ease-in-out; font-size: 16px;">Welcome to Year 6 Project Hub</p>
     <p style="font-size: 14px; color: var(--light-wine); animation: fadeIn 1.3s ease-in-out;">Please fill in the form below to begin</p>
     <div class="form-container">
-      <input type="text" id="name" placeholder="Enter Your Name" style="animation-delay: 1.4s;">
-      <input type="text" id="class" placeholder="Enter Your Class" style="animation-delay: 1.6s;">
-      <button onclick="login()">Access Projects</button>
+      <input type="text" id="name" placeholder="Name" style="animation-delay: 1.4s;">
+      <input type="text" id="class" placeholder="Class" style="animation-delay: 1.6s;">
+      <button onclick="login()">Login</button>
     </div>
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
   </div>  <div class="video-screen" id="videoPage">
@@ -206,7 +202,7 @@ button:hover {
     <div class="header">
       <div id="greeting" style="font-size: 36px; font-weight: bold;">Welcome</div>
       <div style="font-size: 22px;">Caleb International School</div>
-      <div style="font-size: 16px; font-weight: normal;">Student Project Showcase</div>
+      <div style="font-size: 16px; font-weight: normal;">Student Project</div>
     </div>
     <div class="video-layout">
       <div class="video-main">
@@ -226,6 +222,7 @@ button:hover {
         </video>
       </div>
     </div>
+    <button class="signout-btn" onclick="signOut()">Sign Out</button>
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
   </div>  <script>
     function login() {
@@ -240,6 +237,13 @@ button:hover {
       document.getElementById('greeting').innerHTML = `<span style="font-size: 36px; font-weight: bold;">Welcome, ${name}</span>`;
       document.getElementById('welcome').classList.remove('visible');
       document.getElementById('videoPage').classList.add('visible');
+    }
+
+    function signOut() {
+      document.getElementById('videoPage').classList.remove('visible');
+      document.getElementById('welcome').classList.add('visible');
+      document.getElementById('name').value = "";
+      document.getElementById('class').value = "";
     }
   </script></body>
 </html>
