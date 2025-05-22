@@ -11,35 +11,32 @@
       --gold: #FFD700;
       --white: #ffffff;
       --black: #000000;
-      --bg-light: #f9f9f9;
-      --transition: all 0.3s ease;
+      --bg-gradient: linear-gradient(to right, #fff8f0, #ffe4e1);
+      --card-bg: #fffdfa;
     }* {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  background: var(--bg-light);
+  background: var(--bg-gradient);
   color: var(--wine);
-  min-height: 100%;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  overflow-x: hidden;
 }
 
 .logo-placeholder {
   width: 120px;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
   animation: fadeIn 1s ease-in-out;
 }
 
 .logo-placeholder img {
   width: 100%;
+  height: auto;
+  display: block;
 }
 
 .line {
@@ -55,8 +52,8 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 40px 20px;
+  height: 100vh;
+  padding: 20px;
   text-align: center;
 }
 
@@ -67,20 +64,17 @@ body, html {
 .header {
   font-size: 32px;
   font-weight: bold;
-  margin-top: 20px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.subheader {
-  font-size: 18px;
-  color: var(--light-wine);
   margin-top: 10px;
-  animation: fadeIn 1.3s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .form-container {
   width: 100%;
   max-width: 400px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
 
@@ -92,12 +86,12 @@ input {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 18px;
-  background-color: #fff;
+  background-color: #f5f6f7;
   animation: fadeIn 1s ease-in-out;
 }
 
 button {
-  background: var(--wine);
+  background: var(--black);
   color: var(--white);
   padding: 14px;
   width: 100%;
@@ -106,46 +100,65 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  transition: var(--transition);
   animation: fadeIn 1.5s ease-in-out;
+  transition: background 0.3s;
 }
 
 button:hover {
   background: var(--light-wine);
 }
 
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideIn {
+  from {width: 0;}
+  to {width: 120px;}
+}
+
 .video-layout {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  padding: 10px;
   width: 100%;
-  max-width: 1000px;
-  margin-top: 30px;
+  max-width: 1100px;
+}
+
+.video-main {
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin-bottom: 20px;
 }
 
 .video-main video, .sidebar video {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  height: 100%;
+  border: 3px solid var(--gold);
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 .sidebar {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+  justify-content: center;
 }
 
 .sidebar video {
   width: 48%;
+  aspect-ratio: 16/9;
 }
 
 .footer {
   margin-top: 30px;
   text-align: center;
   color: var(--black);
-  font-size: 14px;
-  padding-top: 20px;
+  font-size: 16px;
   border-top: 1px solid #ccc;
+  padding-top: 10px;
 }
 
 @media(min-width: 768px) {
@@ -168,16 +181,6 @@ button:hover {
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideIn {
-  from { width: 0; }
-  to { width: 120px; }
-}
-
   </style>
 </head>
 <body>
@@ -186,12 +189,13 @@ button:hover {
       <img src="logo.png" alt="CIS Logo">
     </div>
     <div class="line"></div>
-    <div class="header">Welcome to Year 6 Project Hub</div>
-    <div class="subheader">Please enter your details to proceed</div>
+    <div class="header">Caleb International School Magodo</div>
+    <p style="animation: fadeIn 1.2s ease-in-out; font-size: 16px;">Welcome to Year 6 Project Hub</p>
+    <p style="font-size: 14px; color: var(--light-wine); animation: fadeIn 1.3s ease-in-out;">Please fill in the form below to begin</p>
     <div class="form-container">
-      <input type="text" id="name" placeholder="Full Name">
-      <input type="text" id="class" placeholder="Class">
-      <button onclick="login()">Enter Project Hub</button>
+      <input type="text" id="name" placeholder="Enter Your Name" style="animation-delay: 1.4s;">
+      <input type="text" id="class" placeholder="Enter Your Class" style="animation-delay: 1.6s;">
+      <button onclick="login()">Access Projects</button>
     </div>
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
   </div>  <div class="video-screen" id="videoPage">
@@ -199,9 +203,12 @@ button:hover {
       <img src="logo.png" alt="CIS Logo">
     </div>
     <div class="line"></div>
-    <div class="header" id="greeting">Welcome</div>
-    <div class="subheader">Student Project Showcase</div>
-    <div class="video-layout container">
+    <div class="header">
+      <div id="greeting" style="font-size: 36px; font-weight: bold;">Welcome</div>
+      <div style="font-size: 22px;">Caleb International School</div>
+      <div style="font-size: 16px; font-weight: normal;">Student Project Showcase</div>
+    </div>
+    <div class="video-layout">
       <div class="video-main">
         <video controls>
           <source src="Year6new.mp4" type="video/mp4">
@@ -211,9 +218,11 @@ button:hover {
       <div class="sidebar">
         <video controls>
           <source src="Other.mp4" type="video/mp4">
+          Your browser does not support the video tag.
         </video>
         <video controls>
           <source src="Year6new.mp4" type="video/mp4">
+          Your browser does not support the video tag.
         </video>
       </div>
     </div>
@@ -228,7 +237,7 @@ button:hover {
         return;
       }
 
-      document.getElementById('greeting').innerHTML = `Welcome, ${name}!`;
+      document.getElementById('greeting').innerHTML = `<span style="font-size: 36px; font-weight: bold;">Welcome, ${name}</span>`;
       document.getElementById('welcome').classList.remove('visible');
       document.getElementById('videoPage').classList.add('visible');
     }
