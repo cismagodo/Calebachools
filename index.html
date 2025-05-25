@@ -1,53 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CIS Magodo Year 6 Project Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caleb International School Project Hub</title>
   <style>
+    /* Theme Colors */
     :root {
       --wine: #8B0000;
       --light-wine: #B22222;
-      --chocolate: #D2691E;
       --gold: #FFD700;
-      --white: #ffffff;
       --black: #000000;
+      --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body, html {
-      margin: 0;
-      padding: 0;
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
       background: var(--white);
       color: var(--wine);
     }
 
-    .logo-placeholder {
-      width: 120px;
-      margin: 20px auto 0 auto;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .logo-placeholder img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .line {
-      width: 120px;
-      height: 4px;
-      background: var(--gold);
-      margin: 10px auto;
-      animation: slideIn 1s ease-in-out;
-    }
-
-    .welcome-screen, .video-screen {
+    .screen {
       display: none;
       flex-direction: column;
       justify-content: center;
@@ -55,65 +35,79 @@
       min-height: 100vh;
       padding: 20px;
       text-align: center;
+      animation: fadeIn 1s ease-in-out;
     }
 
     .visible {
       display: flex;
     }
 
-    .header {
-      font-size: 32px;
-      font-weight: bold;
-      margin-top: 10px;
+    .logo-placeholder {
+      width: 120px;
+      margin-bottom: 10px;
       animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo-placeholder img {
+      width: 100%;
+      display: block;
+    }
+
+    .line {
+      width: 120px;
+      height: 4px;
+      background: var(--gold);
+      margin: 10px 0;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 10px 0;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .subtext {
+      font-size: 16px;
+      color: var(--light-wine);
+      animation: fadeIn 1.3s ease-in-out;
     }
 
     .form-container {
       width: 100%;
       max-width: 400px;
+      margin: 20px 0;
     }
 
     input {
-      display: block;
       width: 100%;
-      padding: 14px;
+      padding: 12px;
       margin-bottom: 15px;
+      font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 18px;
-      background-color: #f5f6f7;
-      animation: fadeIn 1s ease-in-out;
+      background: #f5f6f7;
     }
 
     button {
-      background: var(--black);
-      color: var(--white);
-      padding: 14px;
       width: 100%;
+      padding: 14px;
       font-size: 18px;
       border: none;
       border-radius: 6px;
-      cursor: pointer;
+      background: var(--black);
+      color: var(--white);
       font-weight: bold;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideIn {
-      from { width: 0; }
-      to { width: 120px; }
+      cursor: pointer;
     }
 
     .video-layout {
       display: flex;
       flex-direction: column;
-      padding: 10px;
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
+      margin-top: 20px;
     }
 
     .video-main {
@@ -122,18 +116,10 @@
       margin-bottom: 20px;
     }
 
-    .video-main video,
-    .sidebar video {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
     .sidebar {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      justify-content: space-between;
     }
 
     .sidebar video {
@@ -141,135 +127,139 @@
       aspect-ratio: 16/9;
     }
 
-    .footer {
-      margin-top: 30px;
-      text-align: center;
-      color: var(--black);
-      font-size: 16px;
-      border-top: 1px solid #ccc;
-      padding-top: 10px;
+    video {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
+    .sign-out-button {
+      margin-top: 30px;
+      background: var(--black);
+      color: var(--white);
+      padding: 14px;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 10px;
+      font-size: 14px;
+      text-align: center;
+      color: var(--black);
+      border-top: 1px solid #ccc;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideIn {
+      from {width: 0;}
+      to {width: 120px;}
+    }
+
+    /* Responsive Layout for Larger Screens */
     @media(min-width: 768px) {
       .video-layout {
         flex-direction: row;
       }
+
       .video-main {
         flex: 2;
         margin-right: 10px;
       }
+
       .sidebar {
         flex: 1;
         flex-direction: column;
       }
+
       .sidebar video {
         width: 100%;
       }
-    }
-
-    .content-wrapper {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .sign-out-button {
-      background: var(--black);
-      color: var(--white);
-      padding: 14px;
-      width: 100%;
-      font-size: 18px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Page 1: Welcome Screen -->
-  <div class="welcome-screen visible" id="welcome">
+  <!-- Login / Welcome Screen -->
+  <section class="screen visible" id="welcomeScreen">
     <div class="logo-placeholder">
       <img src="logo.png" alt="CIS Logo">
     </div>
     <div class="line"></div>
-    <div class="header">Caleb International School Magodo</div>
-    <p style="animation: fadeIn 1.2s ease-in-out; font-size: 16px;">Welcome to Year 6 Project Hub</p>
-    <p style="font-size: 14px; color: var(--light-wine); animation: fadeIn 1.3s ease-in-out;">Please fill in the form below to begin</p>
+    <h1 class="header">Caleb International School Magodo</h1>
+    <p>Welcome to Year 6 Project Hub</p>
+    <p class="subtext">Please fill in the form below to begin</p>
+
     <div class="form-container">
-      <input type="text" id="name" placeholder="Name" style="animation-delay: 1.4s;">
-      <input type="text" id="class" placeholder="Class" style="animation-delay: 1.6s;">
+      <input type="text" id="studentName" placeholder="Name" />
+      <input type="text" id="studentClass" placeholder="Class" />
       <button onclick="login()">Login</button>
     </div>
-    <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
-  </div>
 
-  <!-- Page 2: Video Screen -->
-  <div class="video-screen" id="videoPage">
+    <footer>&copy; 2025 Caleb International School Magodo | All Rights Reserved</footer>
+  </section>
+
+  <!-- Video Display Screen -->
+  <section class="screen" id="videoScreen">
     <div class="logo-placeholder">
       <img src="logo.png" alt="CIS Logo">
     </div>
     <div class="line"></div>
-    <div class="header">
-      <div id="greeting" style="font-size: 36px; font-weight: bold;">Welcome</div>
-      <div style="font-size: 22px;">Caleb International School</div>
-      <div style="font-size: 16px; font-weight: normal;">Student Project</div>
-    </div>
+    <h2 class="header" id="greeting">Welcome</h2>
+    <p>Caleb International School | Student Project Hub</p>
 
-    <div class="content-wrapper">
-      <div class="video-layout">
-        <div class="video-main">
-          <video controls>
-            <source src="Year6new.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="sidebar">
-          <video controls>
-            <source src="Other.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <video controls>
-            <source src="Year6new.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
+    <div class="video-layout">
+      <div class="video-main">
+        <video controls>
+          <source src="Year6new.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
-
-      <button class="sign-out-button" onclick="signOut()">Sign Out</button>
+      <div class="sidebar">
+        <video controls>
+          <source src="Other.mp4" type="video/mp4" />
+        </video>
+        <video controls>
+          <source src="Year6new.mp4" type="video/mp4" />
+        </video>
+      </div>
     </div>
 
-    <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
-  </div>
+    <!-- Sign Out Button placed under videos but above footer -->
+    <button class="sign-out-button" onclick="signOut()">Sign Out</button>
 
-  <!-- JavaScript -->
+    <footer>&copy; 2025 Caleb International School Magodo | All Rights Reserved</footer>
+  </section>
+
   <script>
     function login() {
-      const name = document.getElementById('name').value.trim();
-      const className = document.getElementById('class').value.trim();
+      const name = document.getElementById('studentName').value.trim();
+      const className = document.getElementById('studentClass').value.trim();
 
       if (!name || !className) {
-        alert("Please fill in both fields.");
+        alert("Please enter both your name and class.");
         return;
       }
 
-      document.getElementById('greeting').innerHTML = `<span style="font-size: 36px; font-weight: bold;">Welcome, ${name}</span>`;
-
-      document.getElementById('welcome').classList.remove('visible');
-      document.getElementById('videoPage').classList.add('visible');
+      document.getElementById('greeting').textContent = `Welcome, ${name}`;
+      document.getElementById('welcomeScreen').classList.remove('visible');
+      document.getElementById('videoScreen').classList.add('visible');
     }
 
     function signOut() {
-      document.getElementById('videoPage').classList.remove('visible');
-      document.getElementById('welcome').classList.add('visible');
-      document.getElementById('name').value = '';
-      document.getElementById('class').value = '';
+      document.getElementById('videoScreen').classList.remove('visible');
+      document.getElementById('welcomeScreen').classList.add('visible');
+      document.getElementById('studentName').value = '';
+      document.getElementById('studentClass').value = '';
     }
   </script>
-
 </body>
 </html>
