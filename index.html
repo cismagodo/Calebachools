@@ -13,9 +13,11 @@
       --white: #ffffff;
       --black: #000000;
     }
+
     * {
       box-sizing: border-box;
     }
+
     body, html {
       margin: 0;
       padding: 0;
@@ -96,28 +98,14 @@
       animation: fadeIn 1.5s ease-in-out;
     }
 
-    .sign-out-button {
-      background: var(--black);
-      color: var(--white);
-      padding: 14px;
-      width: 100%;
-      font-size: 18px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 30px;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes slideIn {
-      from {width: 0;}
-      to {width: 120px;}
+      from { width: 0; }
+      to { width: 120px; }
     }
 
     .video-layout {
@@ -134,7 +122,8 @@
       margin-bottom: 20px;
     }
 
-    .video-main video, .sidebar video {
+    .video-main video,
+    .sidebar video {
       width: 100%;
       height: 100%;
       border: none;
@@ -159,7 +148,6 @@
       font-size: 16px;
       border-top: 1px solid #ccc;
       padding-top: 10px;
-      width: 100%;
     }
 
     @media(min-width: 768px) {
@@ -178,9 +166,32 @@
         width: 100%;
       }
     }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .sign-out-button {
+      background: var(--black);
+      color: var(--white);
+      padding: 14px;
+      width: 100%;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Page 1: Welcome Screen -->
   <div class="welcome-screen visible" id="welcome">
     <div class="logo-placeholder">
       <img src="logo.png" alt="CIS Logo">
@@ -197,6 +208,7 @@
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
   </div>
 
+  <!-- Page 2: Video Screen -->
   <div class="video-screen" id="videoPage">
     <div class="logo-placeholder">
       <img src="logo.png" alt="CIS Logo">
@@ -207,28 +219,34 @@
       <div style="font-size: 22px;">Caleb International School</div>
       <div style="font-size: 16px; font-weight: normal;">Student Project</div>
     </div>
-    <div class="video-layout">
-      <div class="video-main">
-        <video controls>
-          <source src="Year6new.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+
+    <div class="content-wrapper">
+      <div class="video-layout">
+        <div class="video-main">
+          <video controls>
+            <source src="Year6new.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="sidebar">
+          <video controls>
+            <source src="Other.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video controls>
+            <source src="Year6new.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
-      <div class="sidebar">
-        <video controls>
-          <source src="Other.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <video controls>
-          <source src="Year6new.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+
+      <button class="sign-out-button" onclick="signOut()">Sign Out</button>
     </div>
+
     <div class="footer">&copy; 2025 Caleb International School Magodo | All Rights Reserved</div>
-    <button class="sign-out-button" onclick="signOut()">Sign Out</button>
   </div>
 
+  <!-- JavaScript -->
   <script>
     function login() {
       const name = document.getElementById('name').value.trim();
@@ -252,5 +270,6 @@
       document.getElementById('class').value = '';
     }
   </script>
+
 </body>
 </html>
